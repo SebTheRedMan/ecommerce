@@ -88,7 +88,7 @@ class __TwigTemplate_dfe8263ba41bc233a24eba81a38f0817 extends Template
         echo "<main class=\"container\">
     <section class=\"row\">
         <div class=\"col-12\">
-            <h1>Bienvenue sur ma boutique!</h1>
+            <h1>Bienvenue sur mon ecommerce!</h1>
         </div>
 
         ";
@@ -190,7 +190,7 @@ class __TwigTemplate_dfe8263ba41bc233a24eba81a38f0817 extends Template
 <main class=\"container\">
     <section class=\"row\">
         <div class=\"col-12\">
-            <h1>Bienvenue sur ma boutique!</h1>
+            <h1>Bienvenue sur mon ecommerce!</h1>
         </div>
 
         {% for category in categories %}
