@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil du e-commerce{% endblock %}
+
+{% block body %}
+<main class="container">
+    <section class="row">
+        <div class="col-12">
+            <h1>Bienvenue sur ma boutique!</h1>
+        </div>
+
+        {% for category in categories %}
+
+            {% if category.parent == null %}
+                <div class="col-12">
+                <h2>{{ category.name }}</h2>
+            </div>
+            {% else %}
+            <div class="col-4">
+
+                <div class="card" style="width: 18rem;">
+                
+                    <div class="card-body">
+                        <h3 class="card-title">{{ category.name }}</h3>
+                        {# <p class="card-text">{{ category.description }}</p> #}
+                        <a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        
+            
+        {% endfor %}
+
+        <div class="col-12">
+        {# {{ categories }} #}
+        </div>
+    </section>
+</main>
+{% endblock %}

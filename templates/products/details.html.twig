@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du produit{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>Détail du produit {{ product.name }}</h1>
+            </div>
+            <div class="col-6">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for img in product.images %}
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                    {% for img in product.images %}
+                        <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
+                        <img class="d-block w-100" src="{{ asset('assets/uploads/products/mini/300x300-') ~ img.name }}" alt="{{ product.name }} image {{ loop.index }}">
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <p>{{ product.description }}</p>
+                <p>Catégorie: {{ product.categories.name }}</p>
+                <p>Prix: {{ product.price/100 }}</p>
+                {% if product.stock > 0 %}
+                    <a href="#" class="btn btn-success">Ajouter au panier</a>
+                {% else %}
+                    <p class="text-danger">TEmporairement en rupture de stock</p>
+                {% endif %}
+            </div>
+
+        </section>
+    </main>
+
+
+</div>
+{% endblock %}

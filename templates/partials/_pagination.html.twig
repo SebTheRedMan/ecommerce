@@ -1,0 +1,20 @@
+
+{% if nbp > 1 %}
+    <nav>
+    <ul class="pagination">
+        <li class="page-item {{ currentPage > 1 ? '' : 'disabled'}}">
+            <a href="{{ path(path, {slug: slug, page: currentPage - 1}) }}" class="page-link">&lt;</a>
+        </li>
+
+    {% for page in 1..nbp %}
+        <li class="page-item">
+            <a href="{{ path(path, {slug: slug, page: page}) }}" class="page-link {{ currentPage == page ? 'active' : ''}}">{{ page }}</a>
+        </li>
+    {% endfor %}
+    
+        <li class="page-item {{ currentPage < nbp ? '' : 'disabled'}}">
+            <a href="{{ path(path, {slug: slug, page: currentPage + 1}) }}" class="page-link">&gt;</a>
+        </li>
+    </ul>
+    </nav>
+{% endif %}
